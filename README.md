@@ -15,6 +15,6 @@ git clone in current directory
 add following code
 
 ```
-for f in ~/.shell_config/*; do source $f; done
+for f in ~/.shell_config/*.sh; do source $f; done
 
 ```
