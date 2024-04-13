@@ -19,7 +19,6 @@ function micro-gh-review() {
   done
 }
 
-
 function micro-gh-create() {
   echo "Add title :"
   read title
@@ -42,13 +41,11 @@ function get-pr-links() {
 }
 
 # i.e gh search prs "Bump jwt to 9.0.0" --author anujjindal58 | get-pr-links | gh-pr-qa
-function gh-pr-qa()
-{
+function gh-pr-qa() {
   while read -r line; do
     gh pr edit $line --add-label="pending qa" --remove-label="pending review"
   done
 }
-
 
 function git-clean() {
   for dir in $(ls -d */); do
@@ -58,3 +55,7 @@ function git-clean() {
     cd ..
   done
 }
+
+alias ghcs='gh copilot suggest'
+alias ghcp='gh copilot preview'
+alias ghce='gh copilot explain'
