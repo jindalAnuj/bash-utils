@@ -59,3 +59,18 @@ function git-clean() {
 alias ghcs='gh copilot suggest'
 alias ghcp='gh copilot preview'
 alias ghce='gh copilot explain'
+git-cmr() {
+    echo "You need to install glab for this to work"
+    source_branch=$(git rev-parse --abbrev-ref HEAD)
+    echo "Source branch" $source_branch
+    # Get the project ID from the current Git repository's remote URL
+    project_url=$(git config --get remote.origin.url)
+    echo $project_url
+    # Get the last commit message as the title of the merge request
+    title=$(git log -1 --pretty=%B)
+    echo "Mr Title" $title
+    echo "Please enter source branch:"
+    read target_branch
+    glab mr create -s $source_branch -b $target_branch -t $title -f -y
+    echo "Merge request created: $response"
+}
